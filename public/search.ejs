@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safi Airlines</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js" type="module"></script>
+</head>
+
+<body>
+    <header-component></header-component>
+    <section class="search">
+        <form class="search__form form" action="/search" method="POST">
+            <select class="form__select" name="origin" id="origin">
+                <option value="" selected disabled hidden>Origin</option>
+                <% if (typeof data !== 'undefined') {
+                    if (data.length > 0) {
+                    for (let i = 0; i < data[0].length; i++) { %>
+                    <option value="<%= data[0][i].code %>"><%= data[0][i].city %></option>
+                <% } } } %>
+            </select>
+            <select class="form__select" name="destination" id="destination">
+                <option value="" selected disabled hidden>Destination</option>
+                <% if (typeof data !== 'undefined') {
+                    if (data.length > 0) {
+                    for (let i = 0; i < data[0].length; i++) { %>
+                    <option value="<%= data[0][i].code %>"><%= data[0][i].city %></option>
+                <% } } } %>
+            </select>
+            <input class="form__input" type="date" name="departure_date" id="departure_date" placeholder="Departure date">
+            <input class="form__input" type="number" name="seats" id="seats" placeholder="Passengers">
+            <button class="form__button" type="submit" id="search">Search</button>
+            <p id="search-error" class="form__error ss-align-center"></p>
+        </form>
+    </section>
+    <% if (typeof data !== 'undefined') {
+        if (data.length > 0) {
+        for (let i = 0; i < data[1].length; i++) { %>
+            <div class="flight">
+                <div class="flight__informations ss-shadow-3">
+                    <div class="flight__informations__origin">
+                        <p class="flight__informations__origin__time">
+                            <%= data[1][i].departure_time.split(':').slice(0,-1).join(':') %>
+                        </p>
+                        <p class="flight__informations__origin__name">
+                            <%= data[1][i].origin %>
+                        </p>
+                        <p class="flight__informations__origin__date">
+                            <%= data[1][i].departure_date %>
+                        </p>
+                    </div>
+                    <div class="flight__informations__route">
+                        <div class="flight__informations__route__header">
+                            <div class="flight__informations__route__header__origin">
+                                <span class="material-icons">
+                                    flight_takeoff
+                                </span>
+                            </div>
+                            <div class="flight__informations__route__header__destination">
+                                <span class="material-icons">
+                                    flight_land
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flight__informations__route__body">
+                            <div class="flight__informations__route__body__point"></div>
+                            <div class="flight__informations__route__body__line">
+                                <% if (data[1][i].stopover !== '') { %>
+                                    <div class="flight__informations__route__body__line__stopover"><%= data[1][i].stopover %></div>
+                                <% } %>
+                            </div>
+                            <div class="flight__informations__route__body__point"></div>
+                        </div>
+                        <div class="flight__informations__route__footer">
+                            <div class="flight__informations__route__footer__origin">
+                                <%= data[1][i].origin %>
+                            </div>
+                            <div class="flight__informations__route__footer__destination">
+                                <%= data[1][i].destination %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flight__informations__destination">
+                        <p class="flight__informations__destination__time">
+                            <%= data[1][i].arrival_time.split(':').slice(0,-1).join(':') %>
+                        </p>
+                        <p class="flight__informations__destination__name">
+                            <%= data[1][i].destination %>
+                        </p>
+                        <p class="flight__informations__destination__date">
+                            <%= data[1][i].arrival_date %>
+                        </p>
+                    </div>
+                </div>
+                <form class="flight__details" action="/reserve" method="POST">
+                    <button class="flight__details__price" type="submit" name="id" value="<%= data[1][i].id %>">
+                        <%= data[1][i].price %> MAD
+                    </button>
+                    <div class="flight__details__seats">Available seats: <span><%= data[1][i].seats %></span></div>
+                </form>
+            </div>
+            <% } } else { %>
+                <h2>No flights found</h2>
+                <% } } %>
+
+</body>
+
+</html>

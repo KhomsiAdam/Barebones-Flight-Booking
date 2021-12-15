@@ -1,0 +1,26 @@
+@use "mixins" as *;
+
+// Mainly to make images as a circle
+%circle {
+    border-radius: 50%;
+}
+
+// Removing default appearance
+%no-appearance {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+// Layout
+%layout {
+    padding: 0 2em;
+    @include breakpoint-min(768px) {
+        padding: 0 4em;
+    }
+    @include breakpoint-min(1024px) {
+        padding: 0 6em;
+    }
+    @include breakpoint-min(1280px) {
+        padding: 0 5em;
+    }
+}

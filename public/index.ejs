@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safi Airlines</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js" type="module"></script>
+</head>
+
+<body>
+
+    <header-component></header-component>
+    <main class="hero">
+        <h1 class="hero__title">Sky is the limit</h1>
+        <p class="hero__text">Book a flight now</p>
+        <form class="hero__form form" action="/search" method="POST">
+            <select class="form__select" name="origin" id="origin">
+                <option value="" selected disabled hidden>Origin</option>
+                <% if (typeof data !== 'undefined') {
+                    if (data.length > 0) {
+                    for (let i = 0; i < data.length; i++) { %>
+                    <option value="<%= data[i].code %>"><%= data[i].city %></option>
+                <% } } } %>
+            </select>
+            <select class="form__select" name="destination" id="destination">
+                <option value="" selected disabled hidden>Destination</option>
+                <% if (typeof data !== 'undefined') {
+                    if (data.length > 0) {
+                    for (let i = 0; i < data.length; i++) { %>
+                    <option value="<%= data[i].code %>"><%= data[i].city %></option>
+                <% } } } %>
+            </select>
+            <input class="form__input" type="date" name="departure_date" id="departure_date" placeholder="Departure date">
+            <input class="form__input" type="number" name="seats" id="seats" placeholder="Passengers">
+            <button class="form__button" type="submit" id="search">Search</button>
+            <p id="search-error" class="form__error ss-align-center"></p>
+        </form>
+    </main>
+    <footer-component></footer-component>
+</body>
+
+</html>

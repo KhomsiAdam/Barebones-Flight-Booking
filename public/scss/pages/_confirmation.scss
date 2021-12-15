@@ -1,0 +1,169 @@
+@use "../abstracts" as *;
+
+/* ================ */
+/* Confirmation CSS */
+/* ================ */
+.confirmation {
+    height: calc(100vh - 50px);
+    flex-direction: column;
+    align-items: baseline;
+    overflow: auto;
+}
+
+.ticket-container {
+    height: 500px;
+    width: 900px;
+    gap: 5em;
+    background: $white;
+    border-radius: 5px;
+}
+
+#ticket {
+    height: 300px;
+    width: 800px;
+    display: flex;
+}
+
+.ticket__logo {
+    width: 15%;
+    height: 100%;
+    background: #1c2b2d;
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
+
+.ticket__logo svg {
+    width: 100px;
+    height: 100px;
+}
+
+.ticket__details {
+    width: 65%;
+    height: 100%;
+    background: #1f6f8b;
+    padding: 2em;
+    display: grid;
+    place-content: center;
+    gap: 40px;
+}
+
+.ticket__details__name {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ticket__details__route {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 420px;
+}
+
+.ticket__details__route__dots {
+    display: flex;
+    justify-content: space-between;
+    width: 50px;
+}
+
+.from-to {
+    color: white;
+    font-size: 12px;
+}
+
+.airline {
+    color: white;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+.datetime {
+    color: white;
+    font-size: 14px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+}
+
+.ticket__info {
+    background: #d8e3e7;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2em;
+    border-left: 2px dashed $darkblue;
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: #ffffff;
+        left: -1px;
+        top: 0;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        background: #ffffff;
+        left: -1px;
+        bottom: -15px;
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+.ticket__info p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ticket__info h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#download {
+    height: 60px;
+    width: 200px;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    font-weight: $bold;
+    background: var(--theme-title-color);
+    color: var(--theme-section-bg);
+    cursor: pointer;
+    &:focus {
+        outline: 2px solid $darkgray;
+    }
+    @include breakpoint-max(360px) {
+        font-size: 1.6rem;
+    }
+}
+
+.ticket__deco {
+    .dark,
+    .light,
+    .blue {
+        width: 10px;
+        height: 100px;
+    }
+    .dark {
+        background: $darkblue;
+    }
+    .light {
+        background: $grayblue;
+    }
+    .blue {
+        background: $blue;
+    }
+}

@@ -1,0 +1,36 @@
+:root {
+    --theme-body-bg: #d8e3e7;
+    --theme-section-bg: #f7f7f7;
+    --theme-line-color: transparent;
+    --theme-text-color: #1c2b2d;
+    --theme-title-color: #1f6f8b;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --theme-body-bg: #1c2b2d;
+        --theme-section-bg: #1c2b2d;
+        --theme-line-color: #d8e3e7;
+        --theme-text-color: #f7f7f7;
+        --theme-title-color: #51c4d3;
+    }
+}
+
+.light-theme {
+    --theme-body-bg: #d8e3e7;
+    --theme-section-bg: #f7f7f7;
+    --theme-line-color: transparent;
+    --theme-text-color: #1c2b2d;
+    --theme-title-color: #1f6f8b;
+}
+.dark-theme {
+    --theme-body-bg: #1c2b2d;
+    --theme-section-bg: #1c2b2d;
+    --theme-line-color: #d8e3e7;
+    --theme-text-color: #f7f7f7;
+    --theme-title-color: #51c4d3;
+}
+
+.dark-theme .ss-shadow-2 {
+    box-shadow: unset;
+}

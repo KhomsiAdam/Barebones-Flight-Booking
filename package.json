@@ -1,0 +1,28 @@
+{
+    "name": "barebones-flight-booking",
+    "version": "1.0.0",
+    "description": "barebones flight booking system, native node js",
+    "main": "index.js",
+    "dependencies": {
+      "dotenv": "^10.0.0",
+      "ejs": "^3.1.6",
+      "html2pdf.js": "^0.10.1",
+      "mysql": "^2.18.1",
+      "mysql2": "^2.3.3",
+      "nodemailer": "^6.7.2"
+    },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhomsiAdam/Barebones-Flight-Booking.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KhomsiAdam/Barebones-Flight-Booking/issues"
+  },
+  "homepage": "https://github.com/KhomsiAdam/Barebones-Flight-Booking#readme"
+}

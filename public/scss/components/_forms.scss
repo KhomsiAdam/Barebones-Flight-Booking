@@ -1,0 +1,63 @@
+// Abstracts
+@use "../abstracts/" as *;
+
+/* Forms */
+.form {
+    display: grid;
+    width: 100%;
+    &__input,
+    &__select,
+    &__button {
+        height: 60px;
+        background: var(--theme-section-bg);
+        color: var(--theme-text-color);
+        width: 100%;
+        font-size: 1.6rem;
+        padding: 0 1em;
+        border-radius: 5px;
+        &:focus {
+            outline: 2px solid var(--theme-title-color);
+        }
+        @include breakpoint-min(1024px) {
+            height: 73px;
+        }
+    }
+    .error {
+        outline: 2px solid $red;
+    }
+    &__select {
+        font-size: 1.6rem;
+        @extend %no-appearance;
+        background-repeat: no-repeat;
+        background-position: right 20px center;
+        background-size: 25px 15px;
+        @include breakpoint-max(360px) {
+            font-size: 1.3rem;
+        }
+    }
+    &__button {
+        font-size: 1.8rem;
+        font-weight: $bold;
+        background: var(--theme-title-color);
+        color: var(--theme-section-bg);
+        cursor: pointer;
+        &:focus {
+            outline: 2px solid $darkgray;
+        }
+        @include breakpoint-max(360px) {
+            font-size: 1.6rem;
+        }
+        // @include breakpoint-min(1280px) {
+        //     transition: background 0.3s linear;
+        //     &:hover {
+        //         background: $darkgray;
+        //         transition: background 0.3s linear;
+        //     }
+        // }
+    }
+    &__error {
+        color: $red;
+        font-weight: $semibold;
+        margin-top: 1em;
+    }
+}

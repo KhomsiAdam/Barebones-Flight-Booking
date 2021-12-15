@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safi Airlines</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js" type="module"></script>
+</head>
+
+<body>
+    <header-component></header-component>
+    <section class="book">
+        <div class="book__details">
+            <p class="book__details__data">Type: <%= data[0].type %>
+            </p>
+            <p class="book__details__data">Origin: <%= data[0].origin %>
+            </p>
+            <p class="book__details__data">Destination: <%= data[0].destination %>
+            </p>
+            <p class="book__details__data">Departure date: <%= data[0].departure_date %>
+            </p>
+            <p class="book__details__data">Departure time: <%= data[0].departure_time %>
+            </p>
+            <p class="book__details__data">Arrival date: <%= data[0].arrival_date %>
+            </p>
+            <p class="book__details__data">Arrival time: <%= data[0].arrival_time %>
+            </p>
+            <% if(data[0].stopover !=='' ) { %>
+                <p class="book__details__data">Stopover: <%= data[0].stopover %>
+                </p>
+                <% } %>
+                    <p class="book__details__data">Available seats: <span id="seats"><%= data[0].seats %></span>
+                    </p>
+                    <p class="book__details__data">Price: <%= data[0].price %>
+                    </p>
+        </div>
+        <form class="book__form form" action="/book" method="POST">
+            <input class="form__input" type="text" name="firstname" id="firstname" placeholder="Firstname">
+            <input class="form__input" type="text" name="lastname" id="lastname" placeholder="Lastname">
+            <input class="form__input" type="email" name="email" id="email" placeholder="Email">
+            <input class="form__input" type="tel" name="phone" id="phone" placeholder="Phone number">
+            <input class="form__input" type="number" name="passengers" id="passengers" placeholder="Passengers">
+            <input class="form__input" type="number" name="seats" id="seats" value="<%= data[0].seats %>" hidden>
+            <input class="form__input" type="number" name="totalprice" id="totalprice" value="<%= data[0].price %>" hidden>
+            <input class="form__input" type="text" name="id" id="id" value="<%= data[0].id %>" hidden>
+            <p>Accomodations</p>
+            <div class="accomodations">
+                <div class="transport">
+                    <input type="checkbox" name="transport" id="transport" value="100">
+                    <label for="transport">Transport (+ 200 MAD)</label>
+                </div>
+                <div class="restoration">
+                    <input type="checkbox" name="restoration" id="restoration" value="100">
+                    <label for="restoration">Restoration (+ 100 MAD)</label>
+                </div>
+                <div class="hotel">
+                    <input type="checkbox" name="hotel" id="hotel" value="100">
+                    <label for="hotel">Hotel (+ 800 MAD)</label>
+                </div>
+            </div>
+            <p id="book-error" class="form__error ss-align-center"></p>
+            <button class="form__button" type="submit" id="book" name="book">Book flight</button>
+        </form>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+// Abstracts
+@use "../abstracts" as *;
+
+/* Layouts : Header */
+.header {
+    @extend %layout;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 90px;
+    background: var(--theme-section-bg);
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--theme-line-color);
+    place-items: center;
+    @include breakpoint-min(ss-var($breakpoints, "1024")) {
+        height: 120px;
+    }
+}
+.header__menu {
+    height: 75px;
+    padding: 1em 0;
+    cursor: pointer;
+}
+
+.header__logo {
+    &__img.normal {
+        width: 340px;
+        display: none;
+    }
+    &__img.responsive {
+        width: 75px;
+    }
+    @include breakpoint-min(ss-var($breakpoints, "1280")) {
+        &__img.normal {
+            display: unset;
+        }
+        &__img.responsive {
+            display: none;
+        }
+    }
+}

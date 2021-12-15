@@ -1,0 +1,71 @@
+// Abstracts
+@use "../abstracts" as *;
+
+/* ========== */
+/* Search CSS */
+/* ========== */
+.book {
+    @extend %layout;
+    padding-top: 12em;
+    display: grid;
+    align-content: center;
+    gap: 3em;
+    margin-bottom: 12em;
+    height: 100%;
+    &__details {
+        color: var(--theme-text-color);
+    }
+    &__form {
+        margin-bottom: 12em;
+        height: 100%;
+        .form__input,
+        .form__select {
+            border: 1px solid var(--theme-text-color);
+        }
+        gap: 4%;
+        #origin {
+            grid-area: origin;
+        }
+        #destination {
+            grid-area: dest;
+        }
+        #departure_date {
+            grid-area: d_date;
+        }
+        #seats {
+            grid-area: seats;
+        }
+        #search {
+            grid-area: search;
+        }
+        #search-error {
+            grid-area: error;
+        }
+        p {
+            color: var(--theme-text-color);
+        }
+        .accomodations {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @include breakpoint-min(1280px) {
+                flex-direction: row;
+            }
+            .transport,
+            .restoration,
+            .hotel {
+                display: flex;
+                align-items: center;
+                input {
+                    margin-right: 10px;
+                    width: 20px;
+                    height: 20px;
+                    filter: hue-rotate(328deg);
+                }
+                label {
+                    color: var(--theme-text-color);
+                }
+            }
+        }
+    }
+}

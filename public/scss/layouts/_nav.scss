@@ -1,0 +1,201 @@
+// Abstracts
+@use "../abstracts" as *;
+
+/* Navigation */
+
+// Nav Overlay
+.nav-overlay {
+    display: none;
+    background: $darkgray;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 15;
+    right: 0%;
+    opacity: 0.72;
+}
+.nav-overlay.active {
+    display: block;
+}
+
+// Navigation menu
+.nav {
+    background: $white;
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    height: 100%;
+    transition: 0.2s ease;
+    z-index: 20;
+    right: 0%;
+    opacity: 1;
+    @extend %layout;
+    overflow-y: auto;
+    @include breakpoint-min(1024px) {
+        width: 75vw;
+        right: 25%;
+    }
+    @include breakpoint-min(1280px) {
+        width: 50vw;
+        right: 50%;
+        /* Scrollbar Styling : Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: $blue $darkgray;
+        /* Scrollbar Styling for Webkit browsers */
+        &::-webkit-scrollbar {
+            width: 1.5rem;
+        }
+        &::-webkit-scrollbar-track {
+            background: $darkgray;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $lightgray;
+            border-radius: 3px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: $blue;
+        }
+    }
+    @include breakpoint-min(1600px) {
+        width: 35vw;
+        right: 65%;
+    }
+    &__header {
+        background: $white;
+        transition: 0.2s ease;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 4em;
+        @include breakpoint-min(1024px) {
+            margin-bottom: 8em;
+        }
+        &__close {
+            cursor: pointer;
+            img {
+                width: 30px;
+                height: 30px;
+            }
+            @include breakpoint-min(1024px) {
+                img {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
+        }
+        &__logo {
+            img {
+                width: 146px;
+                height: 45px;
+                @include breakpoint-min(1024px) {
+                    width: 275px;
+                    height: 87px;
+                }
+            }
+        }
+    }
+    &__dropdowns {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        &__section {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 4em;
+            height: auto;
+            &__header {
+                display: flex;
+                margin-bottom: 3em;
+                justify-content: space-between;
+                align-items: center;
+                &__title {
+                    width: 90%;
+                    font-size: 1.8rem;
+                    font-weight: $bold;
+                    color: $green;
+                    @include breakpoint-min(1024px) {
+                        font-size: 2.5rem;
+                    }
+                }
+                &__arrow {
+                    cursor: pointer;
+                    fill: $green;
+                    path {
+                        fill: $green;
+                    }
+                }
+                &__arrow.rotated {
+                    transform: rotate(180deg);
+                }
+            }
+            &__content {
+                display: flex;
+                flex-direction: column;
+                &__link {
+                    text-decoration: none;
+                    color: $black;
+                    font-size: 1.6rem;
+                    opacity: 1;
+                    margin-bottom: 1em;
+                    @include breakpoint-min(1024px) {
+                        font-size: 2rem;
+                    }
+                }
+            }
+            &__content.collapsed {
+                display: none;
+            }
+        }
+    }
+    &__socials {
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: $darkgray;
+            transform: translate(0, -50%);
+            bottom: 85px;
+        }
+        display: grid;
+        grid-template-columns: 57.5% 40%;
+        gap: 2.5%;
+        align-items: center;
+        padding: 2em 0;
+        &__title {
+            font-size: 1.6rem;
+        }
+        &__icons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            &__link {
+                text-decoration: none;
+                margin-left: 10px;
+                img {
+                    width: 35px;
+                    @include breakpoint-min(1024px) {
+                        width: 50px;
+                    }
+                    @include breakpoint-min(1280px) {
+                        width: 35px;
+                    }
+                }
+            }
+        }
+    }
+}
+.nav.hidden {
+    opacity: 0;
+    right: 100%;
+    a {
+        opacity: 0;
+        transition: opacity 0.9s ease-in-out;
+    }
+}

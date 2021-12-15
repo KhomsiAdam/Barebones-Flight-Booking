@@ -1,0 +1,62 @@
+@use "functions" as *;
+// ====== //
+// Colors //
+// ====== //
+$green: #008f70;
+$darkgreen: #2d776e;
+$blue: #1f6f8b;
+$darkblue: #1c2b2d;
+$lightblue: #51c4d3;
+$yellow: #bebe5f;
+$red: #c94242;
+$black: #01040d;
+$darkgray: #1f1f1f;
+$gray: #717171;
+$grayblue: #d8e3e7;
+$lightgray: #c5c6c6;
+$lightergray: #f7f7f7;
+$white: #ffffff;
+// ============ //
+// Font weights //
+// ============ //
+$thin: 100;
+$extralight: 200;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+$extrabold: 800;
+$blackbold: 900;
+// ======================== //
+// Prefixes for class names //
+// ======================== //
+$prefix: "ss-";
+// ========= //
+// Font name //
+// ========= //
+$font-name: "Poppins";
+$font-serif: "sans-serif";
+// ========================== //
+// Device breakpoints (width) //
+// ========================== //
+$breakpoints: (
+    // Mobile
+    "320": 320px,
+    "360": 360px,
+    "375": 375px,
+    "425": 425px,
+    // Tablets
+    "768": 768px,
+    "800": 800px,
+    "900": 900px,
+    "1024": 1024px,
+    // Computers (Laptops/Desktops)
+    "1280": 1280px,
+    "1366": 1366px,
+    "1440": 1440px,
+    "1600": 1600px,
+    "1680": 1680px,
+    "1920": 1920px,
+    "2560": 2560px
+);

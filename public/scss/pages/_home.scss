@@ -1,0 +1,55 @@
+// Abstracts
+@use "../abstracts" as *;
+
+/* ======== */
+/* Home CSS */
+/* ======== */
+.hero {
+    @include bg-img(100%, calc(100vh - 50px), "../airplane_bg.jpg", no-repeat, cover, center);
+    background-color: rgba($black, .3);
+    background-blend-mode: darken;
+    @extend %layout;
+    padding-top: 10em;
+    display: grid;
+    align-content: center;
+    gap: 3em;
+    &__title,
+    &__text {
+        color: $white;
+    }
+    &__form {
+        grid-template-columns: 48% 48%;
+        gap: 4%;
+        grid-template-areas:
+            "origin dest"
+            "d_date d_date"
+            "seats seats"
+            "search search"
+            "error error";
+        #origin {
+            grid-area: origin;
+        }
+        #destination {
+            grid-area: dest;
+        }
+        #departure_date {
+            grid-area: d_date;
+        }
+        #seats {
+            grid-area: seats;
+        }   
+        #search {
+            grid-area: search;
+        }
+        #search-error {
+            grid-area: error;
+        }
+        @include breakpoint-min(1280px) {
+            display: flex;
+            gap: 1em;
+        }
+    }
+    @include breakpoint-min(1280px) {
+        gap: 20em;
+    }
+}
